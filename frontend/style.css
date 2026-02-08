@@ -1,0 +1,101 @@
+/* Global Styles */
+/* ... existing styles ... */
+
+/* Keyframes for Gradient Text Animation */
+@keyframes gradient-x {
+
+    0%,
+    100% {
+        background-size: 200% 200%;
+        background-position: left center;
+    }
+
+    50% {
+        background-size: 200% 200%;
+        background-position: right center;
+    }
+}
+
+.animate-gradient-x {
+    animation: gradient-x 3s ease infinite;
+}
+
+/* Custom Animations NOT covered by Tailwind */
+
+/* Ken Burns Effect for Hero Image */
+@keyframes kenburns {
+    0% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1.25);
+    }
+}
+
+.animate-kenburns {
+    animation: kenburns 20s ease-out infinite alternate;
+}
+
+.animate-spin-slow {
+    animation: spin 8s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Chatbot Scrollbar Customization */
+#chatbot-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+#chatbot-messages::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#chatbot-messages::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+#chatbot-messages::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Fade In Animation */
+.fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pulse Animation for Chat Button */
+@keyframes ping {
+
+    75%,
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.animate-ping {
+    animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
