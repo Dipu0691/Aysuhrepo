@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics | Hope International Academy</title>
+    <!-- Tailwind CSS (Now handled by Vite/PostCSS) -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body
+    class="font-sans text-slate-800 antialiased overflow-x-hidden bg-slate-50 selection:bg-secondary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white/80 backdrop-blur-xl border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="navbar-inner" class="flex justify-between items-center h-24 transition-all duration-500">
+                <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <a href="index.html">
+                        <img class="h-16 w-auto drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                            src="https://hopeinternationalacademy.com/wp-content/uploads/2025/07/cropped-Untitled-design-3-212x66.png"
+                            alt="Hope International Academy">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="index.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Home</a>
+                    <a href="about.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">About</a>
+                    <a href="academics.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-full after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all text-secondary">Academics</a>
+                    <a href="activities.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Activities</a>
+                    <a href="index.html#contact"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Contact</a>
+                    <a href="index.html#admissions"
+                        class="bg-gradient-to-r from-primary to-slate-900 text-white px-8 py-3 rounded-full font-serif font-medium hover:shadow-2xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 block border border-transparent hover:border-secondary/30">Admissions</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="menu-toggle text-primary hover:text-secondary focus:outline-none transition-colors">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div
+            class="md:hidden hidden bg-white/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-slate-100 mobile-menu transform transition-all duration-300 origin-top">
+            <div class="px-6 py-8 space-y-4">
+                <a href="index.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Home</a>
+                <a href="about.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">About</a>
+                <a href="academics.html"
+                    class="block text-lg font-serif font-medium text-secondary hover:text-secondary transition-colors">Academics</a>
+                <a href="activities.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Activities</a>
+                <a href="index.html#contact"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Contact</a>
+                <a href="index.html#admissions"
+                    class="block text-center bg-secondary text-white py-3 rounded-lg font-serif font-medium shadow-lg mt-6">Apply
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="relative h-[50vh] flex items-center justify-center overflow-hidden mt-24">
+        <!-- Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/95 to-primary/80 z-10"></div>
+            <img id="academics-hero-bg"
+                src="https://images.unsplash.com/photo-1577896851231-70ef18881754?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                alt="Library" class="w-full h-full object-cover object-center transform scale-105">
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-secondary text-sm font-medium mb-6 uppercase tracking-widest">Curriculum</span>
+            <h1 id="academics-hero-title-text"
+                class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl">
+                Academic <span class="italic text-secondary">Excellence</span>
+            </h1>
+            <p id="academics-hero-subtitle-text"
+                class="text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed">
+                Empowering minds through rigorous academics, curiosity, and innovation tailored to every stage of
+                growth.
+            </p>
+        </div>
+    </section>
+
+    <!-- Academics Main Content -->
+    <section class="py-32 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Pre-Primary -->
+                <div class="bg-white p-10 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-secondary group flex flex-col h-full"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div
+                        class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-8 group-hover:bg-primary transition-colors">
+                        <i class="fas fa-shapes text-3xl text-primary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold text-primary mb-4">Pre-Primary</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8 flex-grow">Focus on play-based learning, cognitive
+                        development, and
+                        social skills in a nurturing environment designed for little explorers. We build a joyful
+                        foundation for lifelong learning.</p>
+                    <ul class="space-y-3 border-t border-slate-100 pt-6">
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Interactive Play</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Phonics & Numbers</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Creative Arts & Rhymes</li>
+                    </ul>
+                </div>
+                <!-- Primary -->
+                <div class="bg-white p-10 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-primary group flex flex-col h-full"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-8 group-hover:bg-secondary transition-colors">
+                        <i
+                            class="fas fa-book-reader text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold text-primary mb-4">Primary Wing</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8 flex-grow">Building strong foundations in core
+                        subjects with an
+                        emphasis on curiosity, critical thinking, and interactive learning methodologies. We nurture
+                        inquisitive minds to ask "why".</p>
+                    <ul class="space-y-3 border-t border-slate-100 pt-6">
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Core Subject Competencies</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Language Proficiency</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Project-Based Tasks</li>
+                    </ul>
+                </div>
+                <!-- Middle School -->
+                <div class="bg-white p-10 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border-t-4 border-slate-800 group flex flex-col h-full"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-8 group-hover:bg-slate-800 transition-colors">
+                        <i class="fas fa-flask text-3xl text-slate-800 group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold text-primary mb-4">Middle School</h3>
+                    <p class="text-slate-600 leading-relaxed mb-8 flex-grow">Advanced conceptual learning, project-based
+                        activities,
+                        and rigorous preparation for higher academic challenges and board exams. Students are challenged
+                        to debate, experiment, and analyze.</p>
+                    <ul class="space-y-3 border-t border-slate-100 pt-6">
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Advanced Sciences & Math</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Analytical Thinking</li>
+                        <li class="flex items-center text-slate-600"><i class="fas fa-check text-secondary mr-3"></i>
+                            Tech & STEM Labs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Learning Approach Banner -->
+            <div class="mt-24 bg-primary rounded-[2rem] p-10 md:p-16 shadow-2xl relative overflow-hidden text-center text-white"
+                data-aos="fade-up" data-aos-duration="1000">
+                <div
+                    class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5">
+                </div>
+                <div class="relative z-10 max-w-3xl mx-auto">
+                    <h3 class="text-3xl md:text-5xl font-serif font-bold mb-6">Our Teaching Methodology</h3>
+                    <p class="text-slate-300 text-lg font-light leading-relaxed mb-10">
+                        At Hope International Academy, education goes beyond textbooks. Our methodology integrates
+                        real-world applications with C.B.S.E standards to ensure our scholars are future-ready,
+                        adaptable, and empathetic individuals. We emphasize a holistic balance between academic rigor,
+                        psychological well-being, and social skills.
+                    </p>
+                    <a href="index.html#admissions"
+                        class="inline-block bg-secondary text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">Begin
+                        Your Journey</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white pt-24 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+                <!-- Footer contents copied over identically -->
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8">
+                        <img src="https://hopeinternationalacademy.com/wp-content/uploads/2025/07/cropped-Untitled-design-3-212x66.png"
+                            class="h-12 brightness-0 invert opacity-90" alt="Logo">
+                    </div>
+                    <p class="text-slate-400 leading-relaxed max-w-md mb-8">
+                        Hope International Academy is dedicated to developing the full potential of every student. We
+                        shape characters and build futures through excellence in education.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-facebook-f group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-instagram group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-youtube group-hover:scale-110 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-8 text-white">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">About
+                                Us</a></li>
+                        <li><a href="academics.html"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Academics</a>
+                        </li>
+                        <li><a href="index.html#admissions"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Admissions</a>
+                        </li>
+                        <li><a href="privacy.html"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-8 text-white">Contact Info</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1.5 mr-4 text-secondary"></i>
+                            <span class="text-slate-400">Jehanabad, Bihar, India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-4 text-secondary"></i>
+                            <span class="text-slate-400">+91 9852035250</span>
+                            <span class="text-slate-400">+91 8987386838</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-4 text-secondary"></i>
+                            <span class="text-slate-400">info@hopeinternationalacademy.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>&copy; 2026 Hope International Academy. All Rights Reserved.</p>
+                <div class="mt-4 md:mt-0 flex gap-6">
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Main Script -->
+    <script type="module" src="/script.js"></script>
+</body>
+
+</html>

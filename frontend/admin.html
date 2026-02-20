@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Hope International Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#13294b',
+                        secondary: '#C5A059',
+                        dark: '#0f172a'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800 flex h-screen overflow-hidden">
+    <!-- Sidebar -->
+    <aside class="w-64 bg-primary text-white flex flex-col hidden md:flex">
+        <div class="p-6 border-b border-white/10">
+            <h1 class="text-xl font-serif font-bold cursor-pointer" onclick="window.location.href='/'">Admin Portal</h1>
+            <p class="text-xs text-slate-400 mt-1">Hope Academy</p>
+        </div>
+        <nav class="flex-1 p-4 space-y-2">
+            <button onclick="switchTab('dashboard')" id="tab-dashboard"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg bg-white/10 text-white font-medium transition-colors text-left"><i
+                    class="fas fa-chart-line w-5"></i> Dashboard</button>
+            <button onclick="switchTab('hero')" id="tab-hero"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/5 hover:text-white transition-colors text-left"><i
+                    class="fas fa-image w-5"></i> Hero Settings</button>
+            <button onclick="switchTab('calendar')" id="tab-calendar"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/5 hover:text-white transition-colors text-left"><i
+                    class="fas fa-calendar-alt w-5"></i> Calendar</button>
+            <button onclick="switchTab('academics')" id="tab-academics"
+                class="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-slate-300 hover:bg-white/5 hover:text-white transition-colors text-left"><i
+                    class="fas fa-book w-5"></i> Academics Page</button>
+        </nav>
+        <div class="p-4 border-t border-white/10">
+            <button onclick="logout()"
+                class="w-full flex items-center gap-3 px-4 py-3 text-red-300 hover:bg-red-500/10 hover:text-red-200 rounded-lg transition-colors text-left"><i
+                    class="fas fa-sign-out-alt w-5"></i> Logout</button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto w-full">
+        <!-- Topbar for Mobile -->
+        <header class="bg-primary text-white shadow-sm p-4 flex justify-between items-center md:hidden">
+            <h1 class="text-lg font-serif font-bold">Admin Portal</h1>
+            <button onclick="logout()" class="text-red-300"><i class="fas fa-sign-out-alt"></i></button>
+        </header>
+
+        <div class="p-4 md:p-10 max-w-6xl mx-auto w-full">
+
+            <!-- Dashboard Tab -->
+            <div id="section-dashboard" class="admin-section block">
+                <h2 class="text-2xl font-serif font-bold text-primary mb-6">Overview</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center text-xl">
+                            <i class="fas fa-user-graduate"></i></div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-bold">Total Applications</p>
+                            <p class="text-3xl font-black text-primary" id="stat-admissions">0</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 flex items-center gap-4">
+                        <div
+                            class="w-12 h-12 rounded-full bg-secondary/10 text-secondary flex items-center justify-center text-xl">
+                            <i class="fas fa-calendar-check"></i></div>
+                        <div>
+                            <p class="text-sm text-slate-500 font-bold">Total Events/Holidays</p>
+                            <p class="text-3xl font-black text-primary" id="stat-holidays">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <h2 class="text-xl font-serif font-bold text-primary mb-6">Recent Applications</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-50 text-slate-500 text-xs uppercase tracking-wider">
+                                    <th class="p-3">Student Name</th>
+                                    <th class="p-3">Grade</th>
+                                    <th class="p-3">Parent</th>
+                                    <th class="p-3">Contact</th>
+                                </tr>
+                            </thead>
+                            <tbody id="admissions-list" class="divide-y divide-slate-100 text-sm">
+                                <tr>
+                                    <td colspan="4" class="p-4 text-center text-slate-500">Loading admissions...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Settings Tab -->
+            <div id="section-hero" class="admin-section hidden">
+                <h2 class="text-2xl font-serif font-bold text-primary mb-6">Homepage Hero Settings</h2>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <form id="hero-content-form" class="space-y-6 max-w-2xl">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Background Image</label>
+                            <div class="flex items-center gap-4">
+                                <img id="hero-preview" src="" alt="Preview"
+                                    class="h-24 w-40 object-cover rounded-lg bg-slate-100 hidden">
+                                <input type="file" id="hero-image" accept="image/*" class="text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Main Title</label>
+                            <input type="text" id="hero-title"
+                                class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Subtitle</label>
+                            <textarea id="hero-subtitle" rows="3"
+                                class="w-full border rounded-lg p-3 outline-none focus:border-secondary"></textarea>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Primary Button Text</label>
+                                <input type="text" id="hero-btn1-text" placeholder="Apply Now"
+                                    class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Primary Button Link
+                                    (#id)</label>
+                                <input type="text" id="hero-btn1-link" placeholder="#admissions"
+                                    class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Secondary Button Text</label>
+                                <input type="text" id="hero-btn2-text" placeholder="Discover More"
+                                    class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-slate-700 mb-2">Secondary Button Link
+                                    (#id)</label>
+                                <input type="text" id="hero-btn2-link" placeholder="#about"
+                                    class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                            </div>
+                        </div>
+                        <button type="submit"
+                            class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-secondary transition-colors">Save
+                            Homepage Changes</button>
+                    </form>
+                    <div id="hero-save-msg" class="mt-4 text-green-600 font-bold hidden">Changes saved successfully!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar Section Tab -->
+            <div id="section-calendar" class="admin-section hidden">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-serif font-bold text-primary">Manage Calendar</h2>
+                    <button onclick="document.getElementById('add-holiday-modal').classList.remove('hidden')"
+                        class="bg-secondary text-white px-4 py-2 rounded-lg hover:bg-primary transition-colors text-sm font-bold"><i
+                            class="fas fa-plus mr-1"></i> Add Event</button>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <ul id="holidays-list" class="space-y-3">
+                        <li class="p-4 text-center text-slate-500">Loading holidays...</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Academics Tab -->
+            <div id="section-academics" class="admin-section hidden">
+                <h2 class="text-2xl font-serif font-bold text-primary mb-6">Academics Page Content</h2>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
+                    <form id="academics-content-form" class="space-y-6 max-w-2xl">
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Hero Background Image</label>
+                            <div class="flex items-center gap-4">
+                                <img id="academics-hero-preview" src="" alt="Preview"
+                                    class="h-24 w-40 object-cover rounded-lg bg-slate-100 hidden">
+                                <input type="file" id="academics-hero-image" accept="image/*" class="text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Hero Title</label>
+                            <input type="text" id="academics-hero-title"
+                                class="w-full border rounded-lg p-3 outline-none focus:border-secondary">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-slate-700 mb-2">Hero Subtitle</label>
+                            <textarea id="academics-hero-subtitle" rows="3"
+                                class="w-full border rounded-lg p-3 outline-none focus:border-secondary"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="bg-primary text-white px-6 py-2 rounded-lg font-bold hover:bg-secondary transition-colors">Save
+                            Content changes</button>
+                    </form>
+                    <div id="academics-save-msg" class="mt-4 text-green-600 font-bold hidden">Changes saved
+                        successfully!</div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Add/Edit Holiday Modal -->
+    <div id="add-holiday-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm"
+            onclick="document.getElementById('add-holiday-modal').classList.add('hidden')"></div>
+        <div class="relative bg-white rounded-2xl shadow-2xl p-6 w-[90%] md:w-[500px]">
+            <h3 class="text-xl font-serif font-bold text-primary mb-4" id="modal-title">Add/Edit Holiday</h3>
+            <form id="holiday-form" class="space-y-4">
+                <input type="hidden" id="holiday-id">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Month (e.g. Jan)</label>
+                        <input type="text" id="holiday-month" required
+                            class="w-full border rounded-lg p-2 focus:ring-secondary focus:border-secondary outline-none">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Date (e.g. 26)</label>
+                        <input type="text" id="holiday-date" required
+                            class="w-full border rounded-lg p-2 focus:ring-secondary focus:border-secondary outline-none">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Title</label>
+                    <input type="text" id="holiday-title" required
+                        class="w-full border rounded-lg p-2 focus:ring-secondary focus:border-secondary outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Description (e.g. National Event)</label>
+                    <input type="text" id="holiday-desc" required
+                        class="w-full border rounded-lg p-2 focus:ring-secondary focus:border-secondary outline-none">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 mb-1">Duration (e.g. 1 Day)</label>
+                    <input type="text" id="holiday-duration" required
+                        class="w-full border rounded-lg p-2 focus:ring-secondary focus:border-secondary outline-none">
+                </div>
+                <div class="flex justify-end gap-3 mt-6">
+                    <button type="button" onclick="document.getElementById('add-holiday-modal').classList.add('hidden')"
+                        class="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg">Cancel</button>
+                    <button type="submit"
+                        class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-primary transition border-none">Save
+                        Event</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>

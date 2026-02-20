@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Auto-open chatbot after 5 seconds
     setTimeout(() => {
-        if (chatbotWindow.classList.contains('scale-0')) {
+        if (chatbotWindow && chatbotWindow.classList.contains('scale-0')) {
             // We won't auto-open the full window to avoid annoying the user, 
             // but we could pulse the button (handled via CSS animation).
         }
@@ -220,14 +220,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Navbar Scroll Effect
     const navbar = document.getElementById('navbar');
+    const navbarInner = document.getElementById('navbar-inner');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
             navbar.classList.add('shadow-lg');
-            navbar.classList.replace('h-24', 'h-20'); // Shrink height
+            if (navbarInner) navbarInner.classList.replace('h-24', 'h-20'); // Shrink height
             navbar.classList.replace('bg-white/80', 'bg-white/95');
         } else {
             navbar.classList.remove('shadow-lg');
-            navbar.classList.replace('h-20', 'h-24'); // Restore height
+            if (navbarInner) navbarInner.classList.replace('h-20', 'h-24'); // Restore height
             navbar.classList.replace('bg-white/95', 'bg-white/80');
         }
     });
@@ -237,4 +238,123 @@ document.addEventListener('DOMContentLoaded', () => {
     if (heroContent) {
         // AOS handles this now
     }
+
+    // Holiday Modal Logic
+    const calendarBtn = document.getElementById('calendar-btn');
+    const holidayModal = document.getElementById('holiday-modal');
+    const closeHolidayModal = document.getElementById('close-holiday-modal');
+    const holidayModalBackdrop = document.getElementById('holiday-modal-backdrop');
+    const holidayModalContent = document.getElementById('holiday-modal-content');
+
+    function openHolidayModal() {
+        if (holidayModal) {
+            holidayModal.classList.remove('hidden');
+            holidayModal.classList.add('flex');
+
+            // Trigger animations
+            setTimeout(() => {
+                holidayModalBackdrop.classList.remove('opacity-0');
+                holidayModalBackdrop.classList.add('opacity-100');
+                holidayModalContent.classList.remove('scale-95', 'opacity-0');
+                holidayModalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+    }
+
+    function closeHolidayModalFn() {
+        if (holidayModal) {
+            // Reverse animations
+            holidayModalBackdrop.classList.remove('opacity-100');
+            holidayModalBackdrop.classList.add('opacity-0');
+            holidayModalContent.classList.remove('scale-100', 'opacity-100');
+            holidayModalContent.classList.add('scale-95', 'opacity-0');
+
+            setTimeout(() => {
+                holidayModal.classList.add('hidden');
+                holidayModal.classList.remove('flex');
+
+                // Restore body scroll
+                document.body.style.overflow = '';
+            }, 300);
+        }
+    }
+
+    if (calendarBtn) calendarBtn.addEventListener('click', openHolidayModal);
+    if (closeHolidayModal) closeHolidayModal.addEventListener('click', closeHolidayModalFn);
+    if (holidayModalBackdrop) holidayModalBackdrop.addEventListener('click', closeHolidayModalFn);
+    async function loadAcademicsContent() {
+        try {
+            const res = await fetch('/api/content/academics');
+            const data = await res.json();
+
+            const titleEl = document.getElementById('academics-hero-title-text');
+            const subtitleEl = document.getElementById('academics-hero-subtitle-text');
+            const bgEl = document.getElementById('academics-hero-bg');
+
+            if (titleEl && data.heroTitle) titleEl.innerHTML = data.heroTitle;
+            if (subtitleEl && data.heroSubtitle) subtitleEl.innerText = data.heroSubtitle;
+            if (bgEl && data.heroImage) bgEl.src = data.heroImage;
+        } catch (e) {
+            console.error('Error loading academics content:', e);
+        }
+    }
+
+    async function loadHomeContent() {
+        try {
+            const res = await fetch('/api/content/home');
+            const data = await res.json();
+
+            const titleEl = document.getElementById('home-hero-title');
+            const subtitleEl = document.getElementById('home-hero-subtitle');
+            const bgEl = document.getElementById('home-hero-bg');
+            const btn1El = document.getElementById('home-hero-btn1');
+            const btn1TextEl = document.getElementById('home-hero-btn1-text');
+            const btn2El = document.getElementById('home-hero-btn2');
+            const btn2TextEl = document.getElementById('home-hero-btn2-text');
+
+            if (titleEl && data.heroTitle) titleEl.innerHTML = data.heroTitle;
+            if (subtitleEl && data.heroSubtitle) subtitleEl.innerText = data.heroSubtitle;
+            if (bgEl && data.heroImage) bgEl.src = data.heroImage;
+
+            if (btn1El && data.heroBtn1Link) btn1El.href = data.heroBtn1Link;
+            if (btn1TextEl && data.heroBtn1Text) btn1TextEl.innerText = data.heroBtn1Text;
+
+            if (btn2El && data.heroBtn2Link) btn2El.href = data.heroBtn2Link;
+            if (btn2TextEl && data.heroBtn2Text) btn2TextEl.innerText = data.heroBtn2Text;
+
+        } catch (e) {
+            console.error('Error loading home content:', e);
+        }
+    }
+
+    async function loadHolidays() {
+        try {
+            const res = await fetch('/api/holidays');
+            const data = await res.json();
+            const ul = document.querySelector('#holiday-modal-content ul');
+            if (ul && data.length > 0) {
+                ul.innerHTML = data.map(h => `
+                    <li class="flex items-center justify-between p-4 bg-slate-50 border border-slate-100 rounded-xl hover:shadow-md transition-shadow group">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-secondary/10 rounded-full flex flex-col items-center justify-center text-secondary group-hover:bg-secondary group-hover:text-white transition-colors">
+                                <span class="text-sm font-bold">${h.month}</span>
+                                <span class="text-lg font-black leading-none mt-0.5">${h.date}</span>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-primary font-serif text-lg">${h.title}</h4>
+                                <p class="text-sm text-slate-500">${h.description}</p>
+                            </div>
+                        </div>
+                        <span class="text-slate-400 text-sm font-medium bg-slate-100 px-3 py-1 rounded-full">${h.duration}</span>
+                    </li>
+                `).join('');
+            }
+        } catch (e) { console.error('Error loading holidays:', e); }
+    }
+    loadHolidays();
+    loadAcademicsContent();
+    loadHomeContent();
 });

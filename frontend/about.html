@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | Hope International Academy</title>
+    <!-- Tailwind CSS (Now handled by Vite/PostCSS) -->
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Playfair Display (Serif) & Plus Jakarta Sans (Sans) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body
+    class="font-sans text-slate-800 antialiased overflow-x-hidden bg-slate-50 selection:bg-secondary selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white/80 backdrop-blur-xl border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="navbar-inner" class="flex justify-between items-center h-24 transition-all duration-500">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <a href="index.html">
+                        <img class="h-16 w-auto drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                            src="https://hopeinternationalacademy.com/wp-content/uploads/2025/07/cropped-Untitled-design-3-212x66.png"
+                            alt="Hope International Academy">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="index.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Home</a>
+                    <a href="#"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">About</a>
+                    <a href="academics.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Academics</a>
+                    <a href="activities.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Activities</a>
+                    <a href="index.html#contact"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Contact</a>
+                    <a href="index.html#admissions"
+                        class="bg-gradient-to-r from-primary to-slate-900 text-white px-8 py-3 rounded-full font-serif font-medium hover:shadow-2xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 block border border-transparent hover:border-secondary/30">Admissions</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="menu-toggle text-primary hover:text-secondary focus:outline-none transition-colors">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div
+            class="md:hidden hidden bg-white/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-slate-100 mobile-menu transform transition-all duration-300 origin-top">
+            <div class="px-6 py-8 space-y-4">
+                <a href="index.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Home</a>
+                <a href="#"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">About</a>
+                <a href="academics.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Academics</a>
+                <a href="activities.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Activities</a>
+                <a href="index.html#contact"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Contact</a>
+                <a href="index.html#admissions"
+                    class="block text-center bg-secondary text-white py-3 rounded-lg font-serif font-medium shadow-lg mt-6">Apply
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden mt-24">
+        <!-- Parallax Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/50 to-primary/90 z-10"></div>
+            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+                alt="Campus" class="w-full h-full object-cover object-center transform scale-110">
+        </div>
+
+        <div class="relative z-20 text-center px-4 max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1500">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-secondary text-sm font-medium mb-6 uppercase tracking-widest">About
+                Us</span>
+            <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl tracking-tight">
+                Building <span class="italic text-secondary">Future</span> Leaders
+            </h1>
+            <p class="text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed">
+                Discover our story, mission, and commitment to excellence in education.
+            </p>
+        </div>
+    </section>
+
+    <!-- Welcome Message Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+                <div data-aos="fade-right" data-aos-duration="1200">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="w-16 h-[1px] bg-secondary"></div>
+                        <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Welcome</span>
+                    </div>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary mb-8 leading-tight">
+                        Welcome to Hope<br>International Academy,<br><span
+                            class="italic text-secondary">Jehanabad</span>.
+                    </h2>
+                    <div class="space-y-6 text-slate-600 leading-relaxed text-lg font-light">
+                        <p>
+                            Our school is built on the belief that every child has unique potential. We strive to create
+                            a
+                            nurturing, disciplined, and inspiring environment where students grow academically,
+                            socially,
+                            and morally.
+                        </p>
+                        <p>
+                            Together with parents and teachers, we aim to shape confident and responsible future leaders
+                            who will make a positive impact on society.
+                        </p>
+                    </div>
+                    <div class="mt-10 pt-8 border-t border-slate-100">
+                        <div class="flex items-center gap-6">
+                            <div class="w-20 h-20 rounded-full overflow-hidden border-4 border-secondary shadow-lg">
+                                <img src="https://img.freepik.com/free-photo/portrait-confident-male-teacher-with-books_23-2148201201.jpg?w=740"
+                                    alt="Principal" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <div class="font-serif text-2xl font-bold text-primary">Mr. Deepak Kumar</div>
+                                <div class="text-secondary text-sm tracking-wide uppercase">Principal</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative mt-12 lg:mt-0" data-aos="fade-left" data-aos-duration="1200">
+                    <!-- Director's Message Card mimicking screenshot -->
+                    <div class="bg-primary text-white rounded-[2rem] p-10 shadow-2xl relative overflow-hidden group">
+                        <!-- Background Pattern -->
+                        <div
+                            class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+                        </div>
+
+                        <div class="relative z-10">
+                            <!-- Label -->
+                            <div
+                                class="inline-block px-4 py-1 rounded-full border border-secondary/30 text-secondary text-xs uppercase tracking-wider font-semibold mb-6">
+                                Director's Message
+                            </div>
+
+                            <h3 class="text-3xl font-serif font-bold mb-6">Building Future Leaders</h3>
+
+                            <blockquote
+                                class="text-slate-300 text-sm leading-relaxed italic mb-8 border-l-2 border-secondary pl-6 font-light">
+                                "Hope International Academy is based on C.B.S.E, New Delhi. It is a newly
+                                established school, which aims at developing the full potential of the
+                                students. HIA regards education as a process by which a child is molded
+                                into an <span class="text-white font-medium not-italic">emotionally
+                                    balanced</span>, <span class="text-white font-medium not-italic">physically
+                                    healthy</span>,
+                                <span class="text-white font-medium not-italic">intellectually objective</span> and
+                                <span class="text-white font-medium not-italic">spiritually conscious</span>
+                                individual."
+                            </blockquote>
+
+                            <div class="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
+                                <!-- Circular Image -->
+                                <div class="w-32 h-32 flex-shrink-0 relative">
+                                    <div
+                                        class="absolute -inset-2 rounded-full border border-secondary/30 border-dashed animate-spin-slow">
+                                    </div>
+                                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                                        alt="Director"
+                                        class="w-full h-full object-cover rounded-full border-4 border-slate-800 relative z-10 transition-transform duration-500 group-hover:scale-105">
+                                </div>
+
+                                <div class="mt-4 sm:mt-6 text-center sm:text-left">
+                                    <div class="font-serif text-xl font-bold text-white">Mr. Deepak Kumar</div>
+                                    <div class="text-secondary text-xs tracking-widest uppercase mt-1">Director, Hope
+                                        International Academy</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden text-white">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Mission -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-10" data-aos="fade-up"
+                    data-aos-delay="0">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-8">
+                        <i class="fas fa-bullseye text-3xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold mb-6">Our Mission</h3>
+                    <p class="text-slate-300 text-lg leading-relaxed font-light">
+                        To provide quality education that combines academic excellence with strong moral values,
+                        preparing students to succeed in life with confidence and integrity.
+                    </p>
+                </div>
+                <!-- Vision -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-10" data-aos="fade-up"
+                    data-aos-delay="100">
+                    <div class="w-16 h-16 bg-secondary/20 rounded-full flex items-center justify-center mb-8">
+                        <i class="fas fa-eye text-3xl text-secondary"></i>
+                    </div>
+                    <h3 class="text-3xl font-serif font-bold mb-6">Our Vision</h3>
+                    <p class="text-slate-300 text-lg leading-relaxed font-light">
+                        To become a trusted and leading educational institution in Jehanabad by empowering young minds
+                        through innovative teaching and holistic development.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/3">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Our Journey</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary">Our Story</h2>
+            </div>
+
+            <div class="max-w-4xl mx-auto" data-aos="fade-up" data-aos-duration="1200">
+                <p class="text-slate-600 text-lg leading-relaxed text-center mb-12 font-light">
+                    Established with the goal of bringing quality education to Jehanabad, Hope International Academy
+                    began
+                    its journey with a vision to transform learning in the region.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div
+                        class="text-center p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-book text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-4">Academic Foundations</h4>
+                        <p class="text-slate-600 leading-relaxed">Building strong academic foundations with
+                            comprehensive curriculum</p>
+                    </div>
+                    <div
+                        class="text-center p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-user-graduate text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-4">Disciplined Culture</h4>
+                        <p class="text-slate-600 leading-relaxed">Creating a disciplined learning culture for overall
+                            development</p>
+                    </div>
+                    <div
+                        class="text-center p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100">
+                        <div class="w-14 h-14 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+                            <i class="fas fa-globe-asia text-2xl text-white"></i>
+                        </div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-4">Community Events</h4>
+                        <p class="text-slate-600 leading-relaxed">Encouraging participation in cultural and national
+                            events</p>
+                    </div>
+                </div>
+
+                <p class="text-slate-600 text-lg leading-relaxed text-center mt-12 font-light">
+                    Over time, the school has grown steadily, strengthening its infrastructure, academic programs, and
+                    community presence.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">What We Stand
+                        For</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary">Our Core Values</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+                <!-- Value 1 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div
+                        class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors">
+                        <i
+                            class="fas fa-handshake text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-primary mb-3">Integrity</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Honesty in actions and learning</p>
+                </div>
+                <!-- Value 2 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
+                    data-aos="fade-up" data-aos-delay="50">
+                    <div
+                        class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors">
+                        <i
+                            class="fas fa-clipboard-check text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-primary mb-3">Discipline</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Structured growth and responsibility</p>
+                </div>
+                <!-- Value 3 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div
+                        class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors">
+                        <i class="fas fa-star text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-primary mb-3">Excellence</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Continuous improvement</p>
+                </div>
+                <!-- Value 4 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div
+                        class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors">
+                        <i class="fas fa-heart text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-primary mb-3">Respect</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">For teachers, peers, and society</p>
+                </div>
+                <!-- Value 5 -->
+                <div class="bg-white p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 text-center group"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div
+                        class="w-20 h-20 bg-secondary/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-secondary transition-colors">
+                        <i class="fas fa-crown text-3xl text-secondary group-hover:text-white transition-colors"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-primary mb-3">Leadership</h4>
+                    <p class="text-slate-600 text-sm leading-relaxed">Encouraging confidence and initiative</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Approach & Curriculum Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div
+            class="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Learning
+                        Methodology</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary">Our Approach & Curriculum</h2>
+                <p class="text-slate-600 text-lg mt-6 max-w-3xl mx-auto font-light">
+                    We follow a balanced and student-centered learning approach that focuses on
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+                <div class="text-center p-6" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-lightbulb text-2xl text-white"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-primary mb-2">Concept-based teaching</h4>
+                </div>
+                <div class="text-center p-6" data-aos="fade-up" data-aos-delay="50">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-clipboard-list text-2xl text-white"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-primary mb-2">Regular assessments</h4>
+                </div>
+                <div class="text-center p-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-puzzle-piece text-2xl text-white"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-primary mb-2">Activity-based learning</h4>
+                </div>
+                <div class="text-center p-6" data-aos="fade-up" data-aos-delay="150">
+                    <div class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-balance-scale text-2xl text-white"></i>
+                    </div>
+                    <h4 class="font-serif font-bold text-lg text-primary mb-2">Academic & co-curricular balance</h4>
+                </div>
+            </div>
+
+            <div class="bg-slate-50 rounded-3xl p-10" data-aos="fade-up" data-aos-delay="200">
+                <h3 class="text-2xl font-serif font-bold text-primary mb-8 text-center">Students are encouraged to
+                    participate in:</h3>
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-music text-secondary"></i>
+                        <span class="text-slate-700">Cultural programs</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-calendar-star text-secondary"></i>
+                        <span class="text-slate-700">Annual functions</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-flag text-secondary"></i>
+                        <span class="text-slate-700">National celebrations</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-running text-secondary"></i>
+                        <span class="text-slate-700">Sports activities</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <i class="fas fa-trophy text-secondary"></i>
+                        <span class="text-slate-700">Competitions</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section class="py-24 bg-slate-900 relative overflow-hidden text-white">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Our Educators</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold">Meet Our Team</h2>
+                <p class="text-slate-400 text-lg mt-6 max-w-2xl mx-auto font-light">
+                    Our dedicated educators and leadership team are committed to creating a positive and motivating
+                    environment for every student.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Team Member 1 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 text-center group hover:bg-white/10 transition-all"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <div class="absolute -inset-2 rounded-full border border-secondary/30"></div>
+                        <img src="https://img.freepik.com/free-photo/portrait-confident-male-teacher-with-books_23-2148201201.jpg?w=740"
+                            alt="Principal" class="w-full h-full object-cover rounded-full border-4 border-slate-800">
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-white mb-2">Mr. Deepak Kumar</h4>
+                    <div class="text-secondary text-sm tracking-wide uppercase mb-4">Principal</div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Experienced leader with vision for educational
+                        excellence</p>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 text-center group hover:bg-white/10 transition-all"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <div class="absolute -inset-2 rounded-full border border-secondary/30"></div>
+                        <img src="https://img.freepik.com/free-photo/young-female-teacher-standing-against-background_23-2148201406.jpg?w=740"
+                            alt="Vice Principal"
+                            class="w-full h-full object-cover rounded-full border-4 border-slate-800">
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-white mb-2">Mrs. Priya Sharma</h4>
+                    <div class="text-secondary text-sm tracking-wide uppercase mb-4">Vice Principal</div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Dedicated educator focused on holistic student
+                        development</p>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 p-8 text-center group hover:bg-white/10 transition-all"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-32 h-32 mx-auto mb-6 relative">
+                        <div class="absolute -inset-2 rounded-full border border-secondary/30"></div>
+                        <img src="https://img.freepik.com/free-photo/smiling-teacher-holding-books-against-background_23-2148201232.jpg?w=740"
+                            alt="Head Mistress"
+                            class="w-full h-full object-cover rounded-full border-4 border-slate-800">
+                    </div>
+                    <h4 class="font-serif font-bold text-xl text-white mb-2">Mr. Rajesh Kumar</h4>
+                    <div class="text-secondary text-sm tracking-wide uppercase mb-4">Head Master</div>
+                    <p class="text-slate-400 text-sm leading-relaxed">Committed to academic excellence and student
+                        welfare</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-24 bg-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Advantages</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary">Why Choose Hope International
+                    Academy?</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="0">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-user-graduate text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Personalized Attention</h4>
+                        <p class="text-slate-600 leading-relaxed">Individual focus on each student's unique learning
+                            needs and growth</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="50">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-heart text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Moral Development</h4>
+                        <p class="text-slate-600 leading-relaxed">Focus on moral and character building for life-long
+                            values</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Safe Campus</h4>
+                        <p class="text-slate-600 leading-relaxed">Safe and supportive campus environment for all
+                            students</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="150">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-palette text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Balanced Exposure</h4>
+                        <p class="text-slate-600 leading-relaxed">Balanced academic and extracurricular exposure for
+                            overall growth</p>
+                    </div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-users text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Community Engagement</h4>
+                        <p class="text-slate-600 leading-relaxed">Strong community engagement and parent partnerships
+                        </p>
+                    </div>
+                </div>
+                <div class="flex gap-6 p-8 rounded-2xl bg-slate-50 hover:bg-white hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    data-aos="fade-up" data-aos-delay="250">
+                    <div class="flex-shrink-0">
+                        <div class="w-16 h-16 bg-secondary rounded-2xl flex items-center justify-center">
+                            <i class="fas fa-chalkboard-teacher text-2xl text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-serif font-bold text-xl text-primary mb-3">Expert Faculty</h4>
+                        <p class="text-slate-600 leading-relaxed">Qualified and experienced teaching staff dedicated to
+                            student success</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-24 bg-slate-50 relative overflow-hidden">
+        <div
+            class="absolute top-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/3">
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <div class="flex items-center justify-center gap-4 mb-6">
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                    <span class="text-secondary uppercase tracking-widest font-semibold text-sm">Testimonials</span>
+                    <div class="w-16 h-[1px] bg-secondary"></div>
+                </div>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-primary">What Parents Say</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div class="bg-white p-10 rounded-3xl shadow-lg relative" data-aos="fade-up" data-aos-delay="0">
+                    <i class="fas fa-quote-left text-4xl text-secondary/20 absolute top-6 left-6"></i>
+                    <p class="text-slate-600 text-lg leading-relaxed italic relative z-10 mb-8 pt-8">
+                        "Hope International Academy provides a safe and disciplined environment where my child is
+                        growing confidently. The teachers are truly dedicated."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-secondary"></i>
+                        </div>
+                        <div>
+                            <div class="font-serif font-bold text-primary">Parent Name</div>
+                            <div class="text-slate-500 text-sm">Grade 5 Parent</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-10 rounded-3xl shadow-lg relative" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-quote-left text-4xl text-secondary/20 absolute top-6 left-6"></i>
+                    <p class="text-slate-600 text-lg leading-relaxed italic relative z-10 mb-8 pt-8">
+                        "The teachers are supportive and truly care about students' progress. My daughter has developed
+                        confidence and leadership skills here."
+                    </p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-secondary/20 rounded-full flex items-center justify-center">
+                            <i class="fas fa-user text-secondary"></i>
+                        </div>
+                        <div>
+                            <div class="font-serif font-bold text-primary">Parent Name</div>
+                            <div class="text-slate-500 text-sm">Grade 3 Parent</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <div class="text-center mt-16" data-aos="fade-up" data-aos-delay="200">
+                <a href="index.html#admissions"
+                    class="inline-flex items-center gap-3 bg-gradient-to-r from-primary to-slate-900 text-white px-10 py-5 rounded-full font-serif font-bold text-xl hover:shadow-2xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1">
+                    <span>Admissions Open – Enroll Now</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-dark text-white pt-24 pb-12 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <div class="flex items-center mb-8">
+                        <img src="https://hopeinternationalacademy.com/wp-content/uploads/2025/07/cropped-Untitled-design-3-212x66.png"
+                            class="h-12 brightness-0 invert opacity-90" alt="Logo">
+                    </div>
+                    <p class="text-slate-400 leading-relaxed max-w-md mb-8">
+                        Hope International Academy is dedicated to developing the full potential of every student. We
+                        shape characters and build futures through excellence in education.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-facebook-f group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-instagram group-hover:scale-110 transition-transform"></i></a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
+                            class="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-secondary hover:text-white transition-all duration-300 group"><i
+                                class="fab fa-youtube group-hover:scale-110 transition-transform"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-8 text-white">Quick Links</h3>
+                    <ul class="space-y-4">
+                        <li><a href="#"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">About
+                                Us</a></li>
+                        <li><a href="academics.html"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Academics</a>
+                        </li>
+                        <li><a href="index.html#admissions"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Admissions</a>
+                        </li>
+                        <li><a href="privacy.html"
+                                class="text-slate-400 hover:text-secondary transition-colors inline-block hover:translate-x-1 duration-300">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-serif font-bold mb-8 text-white">Contact Info</h3>
+                    <ul class="space-y-6">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1.5 mr-4 text-secondary"></i>
+                            <span class="text-slate-400">Jehanabad, Bihar, India</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone-alt mr-4 text-secondary"></i>
+                            <span class="text-slate-400">+91 9852035250</span>
+                            <span class="text-slate-400">+91 8987386838</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-4 text-secondary"></i>
+                            <span class="text-slate-400">info@hopeinternationalacademy.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>&copy; 2026 Hope International Academy. All Rights Reserved.</p>
+                <div class="mt-4 md:mt-0 flex gap-6">
+                    <a href="terms.html" class="hover:text-white transition-colors">Terms</a>
+                    <a href="privacy.html" class="hover:text-white transition-colors">Privacy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Main Script -->
+    <script type="module" src="/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+{
+    "admissions": [],
+    "holidays": [
+        {
+            "id": 1,
+            "month": "Jan",
+            "date": "26",
+            "title": "Republic Day",
+            "description": "National Holiday",
+            "duration": "1 Day"
+        },
+        {
+            "id": 2,
+            "month": "Mar",
+            "date": "25",
+            "title": "Holi",
+            "description": "Festival of Colors",
+            "duration": "2 Days"
+        },
+        {
+            "id": 3,
+            "month": "Aug",
+            "date": "15",
+            "title": "Independence Day",
+            "description": "National Holiday",
+            "duration": "1 Day"
+        },
+        {
+            "id": 4,
+            "month": "Oct",
+            "date": "02",
+            "title": "Gandhi Jayanti",
+            "description": "National Holiday",
+            "duration": "1 Day"
+        },
+        {
+            "id": 5,
+            "month": "Nov",
+            "date": "01",
+            "title": "Diwali",
+            "description": "Festival of Lights",
+            "duration": "4 Days"
+        },
+        {
+            "id": 6,
+            "month": "Dec",
+            "date": "25",
+            "title": "Christmas",
+            "description": "Winter Break Begins",
+            "duration": "10 Days"
+        }
+    ]
+}
