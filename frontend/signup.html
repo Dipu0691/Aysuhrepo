@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Hope International Academy</title>
+    <meta name="description" content="Register as a parent to access the Hope International Academy portal for fee payments and student management.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: { primary: '#13294b', secondary: '#C5A059', dark: '#0f172a' },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .login-bg { background: linear-gradient(135deg, #0f172a 0%, #13294b 40%, #1e3a5f 60%, #0f172a 100%); background-size: 400% 400%; animation: gradientShift 15s ease infinite; }
+        @keyframes gradientShift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+        .particle { position: absolute; border-radius: 50%; background: rgba(197, 160, 89, 0.15); animation: float linear infinite; pointer-events: none; }
+        @keyframes float { 0% { transform: translateY(100vh) rotate(0deg); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; } }
+        .glass-card { animation: cardSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
+        @keyframes cardSlideIn { to { opacity: 1; transform: translateY(0); } }
+        .input-glow:focus { box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2), 0 0 20px rgba(197, 160, 89, 0.1); }
+        .btn-shimmer { position: relative; overflow: hidden; }
+        .btn-shimmer::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent); transition: left 0.5s; }
+        .btn-shimmer:hover::before { left: 100%; }
+        .ring-pulse { animation: ringPulse 4s ease-in-out infinite; }
+        @keyframes ringPulse { 0%, 100% { opacity: 0.1; transform: scale(1); } 50% { opacity: 0.25; transform: scale(1.05); } }
+        .spinner { animation: spin 1s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+
+<body class="login-bg font-sans text-white min-h-screen flex items-center justify-center relative overflow-hidden py-8">
+    <div id="particles" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
+    <div class="absolute top-[-200px] right-[-200px] w-[600px] h-[600px] border border-white/5 rounded-full ring-pulse z-0"></div>
+    <div class="absolute bottom-[-150px] left-[-150px] w-[500px] h-[500px] border border-secondary/10 rounded-full ring-pulse z-0" style="animation-delay: 2s;"></div>
+
+    <div class="relative z-10 w-full max-w-lg mx-4 glass-card">
+        <div class="bg-white/[0.07] backdrop-blur-2xl border border-white/10 rounded-[2rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] p-8 md:p-10">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/20 mb-4 shadow-lg">
+                    <i class="fas fa-user-plus text-3xl text-secondary"></i>
+                </div>
+                <h1 class="text-2xl font-serif font-bold text-white mb-1">Create Your Account</h1>
+                <p class="text-slate-400 text-sm font-light">Hope International Academy Parent Portal</p>
+            </div>
+
+            <form id="signup-form" class="space-y-4" autocomplete="on">
+                <!-- Parent Name & Phone -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="signup-name" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-user mr-1"></i>Parent Name
+                        </label>
+                        <input type="text" id="signup-name" name="name" required placeholder="Full Name"
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                    </div>
+                    <div>
+                        <label for="signup-phone" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-phone mr-1"></i>Phone
+                        </label>
+                        <input type="tel" id="signup-phone" name="phone" placeholder="10-digit number" pattern="[0-9]{10}"
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="signup-email" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                        <i class="fas fa-envelope mr-1"></i>Email Address
+                    </label>
+                    <input type="email" id="signup-email" name="email" required autocomplete="email" placeholder="you@example.com"
+                        class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                </div>
+
+                <!-- Password Row -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="signup-password" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-lock mr-1"></i>Password
+                        </label>
+                        <input type="password" id="signup-password" name="password" required minlength="6" placeholder="Min 6 characters"
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                    </div>
+                    <div>
+                        <label for="signup-confirm" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-lock mr-1"></i>Confirm Password
+                        </label>
+                        <input type="password" id="signup-confirm" name="confirmPassword" required placeholder="Re-enter password"
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="flex items-center gap-3 pt-2">
+                    <div class="flex-1 h-px bg-white/10"></div>
+                    <span class="text-slate-500 text-[10px] uppercase tracking-widest font-bold">Student Details</span>
+                    <div class="flex-1 h-px bg-white/10"></div>
+                </div>
+
+                <!-- Student Info -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="signup-student" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-child mr-1"></i>Student Name
+                        </label>
+                        <input type="text" id="signup-student" name="studentName" required placeholder="Student's full name"
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-slate-500 outline-none focus:border-secondary/50 transition-all text-sm">
+                    </div>
+                    <div>
+                        <label for="signup-grade" class="block text-[10px] font-bold text-secondary uppercase tracking-widest mb-1.5">
+                            <i class="fas fa-graduation-cap mr-1"></i>Grade
+                        </label>
+                        <select id="signup-grade" name="studentGrade" required
+                            class="input-glow w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white outline-none focus:border-secondary/50 transition-all text-sm appearance-none cursor-pointer">
+                            <option value="" disabled selected class="bg-slate-900">Select Grade</option>
+                            <option value="Pre-Primary" class="bg-slate-900">Pre-Primary</option>
+                            <option value="Grade 1" class="bg-slate-900">Grade 1</option>
+                            <option value="Grade 2" class="bg-slate-900">Grade 2</option>
+                            <option value="Grade 3" class="bg-slate-900">Grade 3</option>
+                            <option value="Grade 4" class="bg-slate-900">Grade 4</option>
+                            <option value="Grade 5" class="bg-slate-900">Grade 5</option>
+                            <option value="Grade 6" class="bg-slate-900">Grade 6</option>
+                            <option value="Grade 7" class="bg-slate-900">Grade 7</option>
+                            <option value="Grade 8" class="bg-slate-900">Grade 8</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Error Message -->
+                <div id="signup-error" class="hidden bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-medium px-4 py-3 rounded-xl flex items-center gap-2">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span id="signup-error-text"></span>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" id="signup-btn"
+                    class="btn-shimmer w-full bg-gradient-to-r from-secondary to-yellow-600 text-white font-bold py-4 rounded-xl hover:shadow-[0_10px_30px_-5px_rgba(197,160,89,0.4)] transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-3 text-sm uppercase tracking-wider mt-2">
+                    <span id="signup-btn-text">Create Account</span>
+                    <i id="signup-btn-icon" class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+
+            <!-- Bottom Links -->
+            <div class="flex justify-between items-center mt-6">
+                <a href="/login.html" class="text-sm text-slate-400 hover:text-secondary transition-colors flex items-center gap-2 group">
+                    <i class="fas fa-arrow-left text-xs group-hover:-translate-x-0.5 transition-transform"></i>
+                    <span>Back to Sign In</span>
+                </a>
+                <a href="/" class="text-sm text-slate-400 hover:text-white transition-colors flex items-center gap-2 group">
+                    <i class="fas fa-home text-xs"></i>
+                    <span>Home</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Floating particles
+        (function () {
+            const container = document.getElementById('particles');
+            for (let i = 0; i < 15; i++) {
+                const p = document.createElement('div');
+                p.classList.add('particle');
+                const size = Math.random() * 6 + 2;
+                p.style.width = size + 'px'; p.style.height = size + 'px';
+                p.style.left = Math.random() * 100 + '%';
+                p.style.animationDuration = (Math.random() * 20 + 10) + 's';
+                p.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(p);
+            }
+        })();
+
+        // Signup form
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('signup-btn');
+            const btnText = document.getElementById('signup-btn-text');
+            const btnIcon = document.getElementById('signup-btn-icon');
+            const errorDiv = document.getElementById('signup-error');
+            const errorText = document.getElementById('signup-error-text');
+
+            const password = document.getElementById('signup-password').value;
+            const confirm = document.getElementById('signup-confirm').value;
+
+            if (password !== confirm) {
+                errorText.textContent = 'Passwords do not match';
+                errorDiv.classList.remove('hidden');
+                return;
+            }
+
+            btn.disabled = true;
+            btn.classList.add('opacity-70', 'cursor-not-allowed');
+            btnText.textContent = 'Creating...';
+            btnIcon.classList.remove('fa-arrow-right');
+            btnIcon.classList.add('fa-circle-notch', 'spinner');
+            errorDiv.classList.add('hidden');
+
+            try {
+                const res = await fetch('/api/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        name: document.getElementById('signup-name').value.trim(),
+                        email: document.getElementById('signup-email').value.trim(),
+                        password,
+                        phone: document.getElementById('signup-phone').value.trim(),
+                        studentName: document.getElementById('signup-student').value.trim(),
+                        studentGrade: document.getElementById('signup-grade').value
+                    })
+                });
+                const data = await res.json();
+
+                if (data.success) {
+                    localStorage.setItem('hope_admin_token', data.token);
+                    if (data.user) localStorage.setItem('hope_admin_user', JSON.stringify(data.user));
+
+                    btnText.textContent = 'Account Created!';
+                    btnIcon.classList.remove('fa-circle-notch', 'spinner');
+                    btnIcon.classList.add('fa-check');
+                    btn.classList.remove('opacity-70');
+                    btn.classList.add('from-green-500', 'to-green-600');
+
+                    setTimeout(() => {
+                        window.location.href = '/portal.html';
+                    }, 800);
+                } else {
+                    errorText.textContent = data.message || 'Registration failed';
+                    errorDiv.classList.remove('hidden');
+                }
+            } catch (err) {
+                errorText.textContent = 'Unable to connect to server. Please try again.';
+                errorDiv.classList.remove('hidden');
+            } finally {
+                setTimeout(() => {
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-70', 'cursor-not-allowed', 'from-green-500', 'to-green-600');
+                    btnText.textContent = 'Create Account';
+                    btnIcon.classList.remove('fa-circle-notch', 'spinner', 'fa-check');
+                    btnIcon.classList.add('fa-arrow-right');
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

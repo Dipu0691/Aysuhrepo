@@ -44,7 +44,7 @@
                         class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Academics</a>
                     <a href="activities.html"
                         class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Activities</a>
-                    <a href="index.html#contact"
+                    <a href="contact.html"
                         class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all hover:-translate-y-0.5 relative after:content-[''] after:absolute after:w-0 after:h-0.5 after:bg-secondary after:left-0 after:-bottom-1 after:transition-all hover:after:w-full">Contact</a>
                     <a href="index.html#admissions"
                         class="bg-gradient-to-r from-primary to-slate-900 text-white px-8 py-3 rounded-full font-serif font-medium hover:shadow-2xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 block border border-transparent hover:border-secondary/30">Admissions</a>
@@ -69,7 +69,7 @@
                     class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Academics</a>
                 <a href="activities.html"
                     class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Activities</a>
-                <a href="index.html#contact"
+                <a href="contact.html"
                     class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Contact</a>
                 <a href="index.html#admissions"
                     class="block text-center bg-secondary text-white py-3 rounded-lg font-serif font-medium shadow-lg mt-6">Apply
@@ -79,11 +79,12 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden mt-24">
+    <section id="about-hero" class="relative h-[60vh] flex items-center justify-center overflow-hidden mt-24">
         <!-- Parallax Background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute inset-0 bg-gradient-to-b from-primary/90 via-primary/50 to-primary/90 z-10"></div>
-            <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
+            <img id="about-hero-bg"
+                src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80"
                 alt="Campus" class="w-full h-full object-cover object-center transform scale-110">
         </div>
 
@@ -91,13 +92,32 @@
             <span
                 class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-secondary text-sm font-medium mb-6 uppercase tracking-widest">About
                 Us</span>
-            <h1
+            <h1 id="about-hero-title"
                 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white mb-6 leading-tight drop-shadow-2xl tracking-tight">
                 Building <span class="italic text-secondary">Future</span> Leaders
             </h1>
-            <p class="text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed">
+            <p id="about-hero-subtitle" class="text-xl text-slate-200 font-light max-w-2xl mx-auto leading-relaxed">
                 Discover our story, mission, and commitment to excellence in education.
             </p>
+
+            <div class="flex flex-col sm:flex-row gap-5 justify-center mt-8">
+                <a id="about-hero-btn1" href="#"
+                    class="group relative px-8 py-4 bg-secondary text-white rounded-full font-serif font-bold text-lg overflow-hidden shadow-[0_0_30px_-5px_rgba(197,160,89,0.5)] hover:shadow-[0_0_50px_-5px_rgba(197,160,89,0.8)] transition-all transform hover:-translate-y-1 text-center hidden">
+                    <span class="relative z-10 flex items-center justify-center gap-3">
+                        <span id="about-hero-btn1-text">Apply Now</span> <i
+                            class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                    </span>
+                    <div
+                        class="absolute inset-0 bg-white/20 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out">
+                    </div>
+                </a>
+                <a id="about-hero-btn2" href="#"
+                    class="group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-serif font-bold text-lg hover:bg-white hover:text-primary transition-all text-center hidden">
+                    <span id="about-hero-btn2-text" class="relative z-10 flex items-center justify-center gap-3">
+                        Discover More
+                    </span>
+                </a>
+            </div>
         </div>
     </section>
 

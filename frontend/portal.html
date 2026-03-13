@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Portal - Hope International Academy</title>
+    <meta name="description" content="Parent portal for Hope International Academy. View fee statements, make payments, and manage student profile.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#13294b', secondary: '#C5A059', accent: '#3b82f6',
+                        surface: '#ffffff', 'surface-dark': '#0f172a',
+                        'bg-light': '#f8fafc', 'bg-dark': '#020617',
+                    },
+                    fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'], serif: ['Playfair Display', 'serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        .dark ::-webkit-scrollbar-thumb { background: #475569; }
+    </style>
+</head>
+
+<body class="bg-bg-light dark:bg-bg-dark text-slate-800 dark:text-slate-200 font-sans flex h-screen overflow-hidden transition-colors duration-300">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-surface dark:bg-surface-dark border-r border-slate-200 dark:border-slate-800 flex flex-col hidden md:flex transition-colors z-20 shadow-sm text-sm">
+        <div class="p-6 pb-2 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+            <div>
+                <h1 class="font-bold text-lg tracking-tight text-primary dark:text-white cursor-pointer" onclick="window.location.href='/'">HOPE<span class="text-secondary opacity-80">PORTAL</span></h1>
+                <p class="text-[10px] text-slate-500 uppercase tracking-widest mt-1 font-semibold">Parent Account</p>
+            </div>
+            <button onclick="toggleDarkMode()" class="text-slate-400 hover:text-secondary transition-colors">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+        </div>
+
+        <div class="px-6 py-4 flex items-center gap-3 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30">
+            <div class="w-8 h-8 rounded-full bg-secondary text-white flex items-center justify-center font-bold" id="user-avatar">P</div>
+            <div>
+                <p class="text-xs font-bold dark:text-slate-200" id="user-name-display">Parent</p>
+                <p class="text-[10px] text-green-500 relative flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 inline-block animate-pulse"></span> Online</p>
+            </div>
+        </div>
+
+        <nav class="flex-1 px-4 py-2 space-y-1 overflow-y-auto">
+            <p class="px-3 text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 mt-4">Navigation</p>
+            <button onclick="switchTab('dashboard')" id="tab-dashboard"
+                class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-secondary border-l-2 border-transparent hover:border-secondary transition-all text-left font-medium">
+                <i class="fas fa-th-large w-5 text-center"></i> Dashboard
+            </button>
+            <button onclick="switchTab('fees')" id="tab-fees"
+                class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-secondary border-l-2 border-transparent hover:border-secondary transition-all text-left font-medium">
+                <i class="fas fa-file-invoice-dollar w-5 text-center"></i> Fee Statement
+            </button>
+            <button onclick="switchTab('profile')" id="tab-profile"
+                class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-secondary border-l-2 border-transparent hover:border-secondary transition-all text-left font-medium">
+                <i class="fas fa-user-circle w-5 text-center"></i> Profile
+            </button>
+        </nav>
+
+        <div class="p-4 border-t border-slate-100 dark:border-slate-800">
+            <button onclick="logout()"
+                class="w-full flex items-center justify-center gap-2 px-4 py-2 text-slate-500 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 rounded-lg transition-all text-sm font-bold border border-transparent hover:border-red-100">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col h-screen overflow-hidden w-full relative bg-bg-light dark:bg-bg-dark">
+        <!-- Mobile Topbar -->
+        <header class="bg-surface dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 p-4 flex justify-between items-center md:hidden z-30">
+            <h1 class="font-bold tracking-tight text-primary dark:text-white">HOPE<span class="text-secondary">PORTAL</span></h1>
+            <div class="flex items-center gap-4">
+                <button onclick="toggleDarkMode()" class="text-slate-400"><i class="fas fa-moon dark:hidden"></i><i class="fas fa-sun hidden dark:block text-yellow-400"></i></button>
+                <button onclick="logout()" class="text-slate-400 hover:text-red-400"><i class="fas fa-sign-out-alt"></i></button>
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-400"><i class="fas fa-bars"></i></button>
+            </div>
+        </header>
+        <div id="mobile-menu" class="hidden absolute top-[60px] left-0 right-0 bg-surface dark:bg-surface-dark border-b z-30 shadow-lg p-4 flex flex-col gap-2 md:hidden">
+            <button onclick="switchTab('dashboard'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full text-left px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">Dashboard</button>
+            <button onclick="switchTab('fees'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full text-left px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">Fee Statement</button>
+            <button onclick="switchTab('profile'); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full text-left px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-lg">Profile</button>
+        </div>
+
+        <div class="flex-1 overflow-y-auto p-4 md:p-8 scroll-smooth">
+            <div class="max-w-5xl mx-auto space-y-8">
+
+                <!-- DASHBOARD -->
+                <div id="section-dashboard" class="portal-section block">
+                    <div class="mb-6">
+                        <h2 class="text-2xl font-bold text-primary dark:text-white tracking-tight">Welcome, <span id="dash-parent-name">Parent</span></h2>
+                        <p class="text-sm text-slate-500 mt-1">Here's an overview of <span id="dash-student-name">your student</span>'s account.</p>
+                    </div>
+
+                    <!-- Student Info Card -->
+                    <div class="bg-gradient-to-br from-primary to-slate-800 rounded-2xl p-6 md:p-8 text-white shadow-xl mb-8 relative overflow-hidden">
+                        <div class="absolute right-0 top-0 opacity-10"><i class="fas fa-graduation-cap text-[10rem] -mr-8 -mt-8"></i></div>
+                        <div class="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div>
+                                <p class="text-xs text-slate-400 uppercase tracking-widest font-bold mb-1">Student</p>
+                                <h3 class="text-2xl font-serif font-bold" id="dash-student-name-card">—</h3>
+                                <p class="text-sm text-slate-300 mt-1"><i class="fas fa-graduation-cap mr-1 text-secondary"></i> <span id="dash-student-grade">—</span></p>
+                            </div>
+                            <div class="flex gap-6">
+                                <div class="text-center">
+                                    <p class="text-3xl font-black" id="dash-total-fees">₹0</p>
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-wider font-bold mt-1">Total Fees</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-3xl font-black text-green-400" id="dash-paid-fees">₹0</p>
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-wider font-bold mt-1">Paid</p>
+                                </div>
+                                <div class="text-center">
+                                    <p class="text-3xl font-black text-amber-400" id="dash-pending-fees">₹0</p>
+                                    <p class="text-[10px] text-slate-400 uppercase tracking-wider font-bold mt-1">Pending</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <button onclick="switchTab('fees')" class="bg-surface dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group text-left">
+                            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/20 dark:text-blue-400 flex items-center justify-center mb-3"><i class="fas fa-file-invoice-dollar text-lg"></i></div>
+                            <h4 class="font-bold text-primary dark:text-white group-hover:text-secondary transition-colors">Fee Statement</h4>
+                            <p class="text-xs text-slate-500 mt-1">View detailed fee records</p>
+                        </button>
+                        <button onclick="switchTab('profile')" class="bg-surface dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group text-left">
+                            <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 dark:bg-green-500/20 dark:text-green-400 flex items-center justify-center mb-3"><i class="fas fa-user-edit text-lg"></i></div>
+                            <h4 class="font-bold text-primary dark:text-white group-hover:text-secondary transition-colors">Edit Profile</h4>
+                            <p class="text-xs text-slate-500 mt-1">Update contact information</p>
+                        </button>
+                        <a href="/" class="bg-surface dark:bg-surface-dark p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group text-left">
+                            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400 flex items-center justify-center mb-3"><i class="fas fa-home text-lg"></i></div>
+                            <h4 class="font-bold text-primary dark:text-white group-hover:text-secondary transition-colors">School Website</h4>
+                            <p class="text-xs text-slate-500 mt-1">Visit the main website</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- FEE STATEMENT -->
+                <div id="section-fees" class="portal-section hidden">
+                    <div class="flex justify-between items-end mb-6">
+                        <div>
+                            <h2 class="text-2xl font-bold text-primary dark:text-white tracking-tight">Fee Statement</h2>
+                            <p class="text-sm text-slate-500 mt-1">All fee records for your student.</p>
+                        </div>
+                    </div>
+
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                        <div class="bg-surface dark:bg-surface-dark p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 dark:bg-blue-500/20 flex items-center justify-center"><i class="fas fa-receipt"></i></div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-medium">Total Fees</p>
+                                    <p class="text-xl font-black text-primary dark:text-white" id="fee-total">₹0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-surface dark:bg-surface-dark p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-green-100 text-green-600 dark:bg-green-500/20 flex items-center justify-center"><i class="fas fa-check-circle"></i></div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-medium">Paid</p>
+                                    <p class="text-xl font-black text-green-600 dark:text-green-400" id="fee-paid">₹0</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-surface dark:bg-surface-dark p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 dark:bg-amber-500/20 flex items-center justify-center"><i class="fas fa-clock"></i></div>
+                                <div>
+                                    <p class="text-xs text-slate-500 font-medium">Pending</p>
+                                    <p class="text-xl font-black text-amber-600 dark:text-amber-400" id="fee-pending">₹0</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fee Table -->
+                    <div class="bg-surface dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left text-sm" id="fee-table">
+                                <thead>
+                                    <tr class="bg-slate-50/80 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-wider font-bold">
+                                        <th class="p-4 border-b border-slate-100 dark:border-slate-800">Description</th>
+                                        <th class="p-4 border-b border-slate-100 dark:border-slate-800">Amount</th>
+                                        <th class="p-4 border-b border-slate-100 dark:border-slate-800">Due Date</th>
+                                        <th class="p-4 border-b border-slate-100 dark:border-slate-800">Status</th>
+                                        <th class="p-4 border-b border-slate-100 dark:border-slate-800">Receipt</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fee-list" class="divide-y divide-slate-100 dark:divide-slate-800/80">
+                                    <tr><td colspan="5" class="p-6 text-center text-slate-400">Loading fee records...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROFILE -->
+                <div id="section-profile" class="portal-section hidden">
+                    <h2 class="text-2xl font-bold text-primary dark:text-white tracking-tight mb-6">My Profile</h2>
+
+                    <div class="bg-surface dark:bg-surface-dark rounded-2xl p-8 border border-slate-200 dark:border-slate-800 shadow-sm max-w-2xl">
+                        <form id="profile-form" class="space-y-6">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Parent Name</label>
+                                    <input type="text" id="profile-name" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 dark:text-white outline-none focus:ring-2 focus:ring-secondary/50 transition text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Phone</label>
+                                    <input type="tel" id="profile-phone" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 dark:text-white outline-none focus:ring-2 focus:ring-secondary/50 transition text-sm">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Email (Read Only)</label>
+                                <input type="email" id="profile-email" disabled class="w-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 dark:text-white outline-none text-sm cursor-not-allowed opacity-70">
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Student Name</label>
+                                    <input type="text" id="profile-student" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 dark:text-white outline-none focus:ring-2 focus:ring-secondary/50 transition text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Student Grade</label>
+                                    <select id="profile-grade" class="w-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 dark:text-white outline-none focus:ring-2 focus:ring-secondary/50 transition text-sm">
+                                        <option value="Pre-Primary">Pre-Primary</option>
+                                        <option value="Grade 1">Grade 1</option>
+                                        <option value="Grade 2">Grade 2</option>
+                                        <option value="Grade 3">Grade 3</option>
+                                        <option value="Grade 4">Grade 4</option>
+                                        <option value="Grade 5">Grade 5</option>
+                                        <option value="Grade 6">Grade 6</option>
+                                        <option value="Grade 7">Grade 7</option>
+                                        <option value="Grade 8">Grade 8</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 pt-2">
+                                <button type="submit" class="px-6 py-3 bg-secondary text-white font-bold rounded-xl hover:bg-secondary/90 transition shadow-md hover:shadow-lg text-sm flex items-center gap-2">
+                                    <i class="fas fa-save"></i> Save Changes
+                                </button>
+                            </div>
+                            <div id="profile-msg" class="hidden text-sm font-medium px-4 py-3 rounded-xl"></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 pointer-events-none w-80"></div>
+
+    <script src="portal.js"></script>
+</body>
+</html>

@@ -1,53 +1,138 @@
 {
-    "admissions": [],
-    "holidays": [
-        {
-            "id": 1,
-            "month": "Jan",
-            "date": "26",
-            "title": "Republic Day",
-            "description": "National Holiday",
-            "duration": "1 Day"
-        },
-        {
-            "id": 2,
-            "month": "Mar",
-            "date": "25",
-            "title": "Holi",
-            "description": "Festival of Colors",
-            "duration": "2 Days"
-        },
-        {
-            "id": 3,
-            "month": "Aug",
-            "date": "15",
-            "title": "Independence Day",
-            "description": "National Holiday",
-            "duration": "1 Day"
-        },
-        {
-            "id": 4,
-            "month": "Oct",
-            "date": "02",
-            "title": "Gandhi Jayanti",
-            "description": "National Holiday",
-            "duration": "1 Day"
-        },
-        {
-            "id": 5,
-            "month": "Nov",
-            "date": "01",
-            "title": "Diwali",
-            "description": "Festival of Lights",
-            "duration": "4 Days"
-        },
-        {
-            "id": 6,
-            "month": "Dec",
-            "date": "25",
-            "title": "Christmas",
-            "description": "Winter Break Begins",
-            "duration": "10 Days"
-        }
-    ]
+  "admissions": [
+    {
+      "id": 1771668915295,
+      "studentName": "Ayush",
+      "grade": "Grade 7",
+      "parentName": "Ashok ",
+      "phone": "7979772126",
+      "email": "ayushpatelp89@gmail.com",
+      "status": "pending",
+      "dateSubmitted": "2026-02-21T10:15:15.295Z"
+    }
+  ],
+  "holidays": [
+    {
+      "id": 1,
+      "month": "Jan",
+      "date": "26",
+      "title": "Republic Day",
+      "description": "National Holiday",
+      "duration": "1 Day"
+    },
+    {
+      "id": 2,
+      "month": "Mar",
+      "date": "25",
+      "title": "Holi",
+      "description": "Festival of Colors",
+      "duration": "2 Days"
+    },
+    {
+      "id": 3,
+      "month": "Aug",
+      "date": "15",
+      "title": "Independence Day",
+      "description": "National Holiday",
+      "duration": "1 Day"
+    },
+    {
+      "id": 4,
+      "month": "Oct",
+      "date": "02",
+      "title": "Gandhi Jayanti",
+      "description": "National Holiday",
+      "duration": "1 Day"
+    },
+    {
+      "id": 5,
+      "month": "Nov",
+      "date": "01",
+      "title": "Diwali",
+      "description": "Festival of Lights",
+      "duration": "4 Days"
+    },
+    {
+      "id": 6,
+      "month": "Dec",
+      "date": "25",
+      "title": "Christmas",
+      "description": "Winter Break Begins",
+      "duration": "10 Days"
+    }
+  ],
+  "pages": {},
+  "contacts": [
+    {
+      "id": 1771616650052,
+      "name": "Test User",
+      "email": "test@example.com",
+      "subject": "Testing",
+      "message": "This is a test message",
+      "dateSubmitted": "2026-02-20T19:44:10.052Z",
+      "isRead": true
+    }
+  ],
+  "users": [
+    {
+      "id": 1771646471482,
+      "username": "admin",
+      "password": "$2b$10$FmR8wBFEfdpyKv2LDbfex.oPyiIUr9z/ofmZI.JRKUS1EhnS6OtYK",
+      "role": "Super Admin",
+      "name": "System Admin"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1771668915296,
+      "message": "New application received for Ayush (Grade 7)",
+      "type": "success",
+      "date": "2026-02-21T10:15:15.296Z",
+      "read": false
+    }
+  ],
+  "analytics": {
+    "visitors": 0,
+    "pageViews": {},
+    "sources": {},
+    "devices": {}
+  },
+  "gallery": [
+    {
+      "id": 1,
+      "url": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "Students studying together in the library",
+      "dateAdded": "2026-02-21T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "url": "https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "University campus building",
+      "dateAdded": "2026-02-21T10:05:00.000Z"
+    },
+    {
+      "id": 3,
+      "url": "https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "Graduation day celebration",
+      "dateAdded": "2026-02-21T10:10:00.000Z"
+    },
+    {
+      "id": 4,
+      "url": "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "Lecture hall in progress",
+      "dateAdded": "2026-02-21T10:15:00.000Z"
+    },
+    {
+      "id": 5,
+      "url": "https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "Student holding books",
+      "dateAdded": "2026-02-21T10:20:00.000Z"
+    },
+    {
+      "id": 6,
+      "url": "https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      "alt": "Students in a classroom",
+      "dateAdded": "2026-02-21T10:25:00.000Z"
+    }
+  ]
 }

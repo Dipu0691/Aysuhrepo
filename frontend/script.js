@@ -11,6 +11,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileMenu = document.querySelector('.mobile-menu');
 
+    // Contact Us Form Logic
+    const contactForm = document.getElementById('public-contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = contactForm.querySelector('button');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = 'Sending... <i class="fas fa-spinner fa-spin ml-2"></i>';
+            btn.disabled = true;
+
+            const payload = {
+                name: document.getElementById('contact-name').value,
+                email: document.getElementById('contact-email').value,
+                subject: document.getElementById('contact-subject').value,
+                message: document.getElementById('contact-message').value
+            };
+
+            try {
+                const res = await fetch('/api/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                const data = await res.json();
+
+                if (res.ok && data.success) {
+                    document.getElementById('contact-success-msg').classList.remove('hidden');
+                    contactForm.reset();
+                    setTimeout(() => {
+                        document.getElementById('contact-success-msg').classList.add('hidden');
+                    }, 5000);
+                } else {
+                    console.error('Contact submission API error response:', data);
+                    alert(`Submission failed: ${data.message || 'Unknown error'}`);
+                }
+            } catch (err) {
+                console.error('Contact submission network error:', err);
+                alert('An error occurred while sending your message. Please try again later.');
+            } finally {
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        });
+    }
+
     if (menuToggle && mobileMenu) {
         menuToggle.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -304,7 +349,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     async function loadHomeContent() {
         try {
-            const res = await fetch('/api/content/home');
+            const res = await fetch('/api/content/homepage');
             const data = await res.json();
 
             const titleEl = document.getElementById('home-hero-title');
@@ -314,16 +359,54 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn1TextEl = document.getElementById('home-hero-btn1-text');
             const btn2El = document.getElementById('home-hero-btn2');
             const btn2TextEl = document.getElementById('home-hero-btn2-text');
+            const heroSection = document.getElementById('home');
+
+            if (data.enabled === false && heroSection) {
+                heroSection.style.display = 'none';
+                return;
+            } else if (heroSection) {
+                heroSection.style.display = 'flex';
+            }
 
             if (titleEl && data.heroTitle) titleEl.innerHTML = data.heroTitle;
             if (subtitleEl && data.heroSubtitle) subtitleEl.innerText = data.heroSubtitle;
             if (bgEl && data.heroImage) bgEl.src = data.heroImage;
 
-            if (btn1El && data.heroBtn1Link) btn1El.href = data.heroBtn1Link;
-            if (btn1TextEl && data.heroBtn1Text) btn1TextEl.innerText = data.heroBtn1Text;
+            if (btn1El) {
+                if (data.heroBtn1Show === false) {
+                    btn1El.style.display = 'none';
+                } else {
+                    btn1El.style.display = 'inline-flex';
+                    if (data.heroBtn1Link) btn1El.href = data.heroBtn1Link;
+                    if (data.heroBtn1Text && btn1TextEl) btn1TextEl.innerText = data.heroBtn1Text;
+                    if (data.heroBtn1NewTab) btn1El.target = '_blank';
+                    else btn1El.removeAttribute('target');
 
-            if (btn2El && data.heroBtn2Link) btn2El.href = data.heroBtn2Link;
-            if (btn2TextEl && data.heroBtn2Text) btn2TextEl.innerText = data.heroBtn2Text;
+                    if (data.heroBtn1Style === 'outline') {
+                        btn1El.className = 'group relative px-8 py-4 bg-transparent border-2 border-secondary text-secondary rounded-full font-serif font-bold text-lg hover:bg-secondary hover:text-white transition-all text-center';
+                    } else {
+                        btn1El.className = 'group relative px-8 py-4 bg-secondary text-white rounded-full font-serif font-bold text-lg overflow-hidden shadow-[0_0_30px_-5px_rgba(197,160,89,0.5)] hover:shadow-[0_0_50px_-5px_rgba(197,160,89,0.8)] transition-all transform hover:-translate-y-1 text-center';
+                    }
+                }
+            }
+
+            if (btn2El) {
+                if (data.heroBtn2Show === false) {
+                    btn2El.style.display = 'none';
+                } else {
+                    btn2El.style.display = 'inline-flex';
+                    if (data.heroBtn2Link) btn2El.href = data.heroBtn2Link;
+                    if (data.heroBtn2Text && btn2TextEl) btn2TextEl.innerText = data.heroBtn2Text;
+                    if (data.heroBtn2NewTab) btn2El.target = '_blank';
+                    else btn2El.removeAttribute('target');
+
+                    if (data.heroBtn2Style === 'solid') {
+                        btn2El.className = 'group relative px-8 py-4 bg-white text-primary rounded-full font-serif font-bold text-lg hover:bg-slate-100 transition-all text-center';
+                    } else {
+                        btn2El.className = 'group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-serif font-bold text-lg hover:bg-white hover:text-primary transition-all text-center';
+                    }
+                }
+            }
 
         } catch (e) {
             console.error('Error loading home content:', e);
@@ -354,7 +437,143 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } catch (e) { console.error('Error loading holidays:', e); }
     }
+    async function loadAboutContent() {
+        try {
+            const res = await fetch('/api/content/about');
+            if (!res.ok) return;
+            const payload = await res.json();
+            const data = payload.pageData || payload;
+
+            const titleEl = document.getElementById('about-hero-title');
+            const subtitleEl = document.getElementById('about-hero-subtitle');
+            const bgEl = document.getElementById('about-hero-bg');
+            const btn1El = document.getElementById('about-hero-btn1');
+            const btn1TextEl = document.getElementById('about-hero-btn1-text');
+            const btn2El = document.getElementById('about-hero-btn2');
+            const btn2TextEl = document.getElementById('about-hero-btn2-text');
+            const heroSection = document.getElementById('about-hero');
+
+            if (data.enabled === false && heroSection) {
+                heroSection.style.display = 'none';
+                return;
+            } else if (heroSection) {
+                heroSection.style.display = 'flex';
+            }
+
+            if (titleEl && data.heroTitle) titleEl.innerHTML = data.heroTitle;
+            if (subtitleEl && data.heroSubtitle) subtitleEl.innerText = data.heroSubtitle;
+            if (bgEl && data.heroImage) bgEl.src = data.heroImage;
+
+            if (btn1El) {
+                if (data.heroBtn1Show === false) {
+                    btn1El.style.display = 'none';
+                } else {
+                    btn1El.style.display = 'inline-flex';
+                    if (data.heroBtn1Link) btn1El.href = data.heroBtn1Link;
+                    if (data.heroBtn1Text && btn1TextEl) btn1TextEl.innerText = data.heroBtn1Text;
+                    if (data.heroBtn1NewTab) btn1El.target = '_blank';
+                    else btn1El.removeAttribute('target');
+
+                    if (data.heroBtn1Style === 'outline') {
+                        btn1El.className = 'group relative px-8 py-4 bg-transparent border-2 border-secondary text-secondary rounded-full font-serif font-bold text-lg hover:bg-secondary hover:text-white transition-all text-center';
+                    } else {
+                        btn1El.className = 'group relative px-8 py-4 bg-secondary text-white rounded-full font-serif font-bold text-lg overflow-hidden shadow-[0_0_30px_-5px_rgba(197,160,89,0.5)] hover:shadow-[0_0_50px_-5px_rgba(197,160,89,0.8)] transition-all transform hover:-translate-y-1 text-center';
+                    }
+                }
+            }
+
+            if (btn2El) {
+                if (data.heroBtn2Show === false) {
+                    btn2El.style.display = 'none';
+                } else {
+                    btn2El.style.display = 'inline-flex';
+                    if (data.heroBtn2Link) btn2El.href = data.heroBtn2Link;
+                    if (data.heroBtn2Text && btn2TextEl) btn2TextEl.innerText = data.heroBtn2Text;
+                    if (data.heroBtn2NewTab) btn2El.target = '_blank';
+                    else btn2El.removeAttribute('target');
+
+                    if (data.heroBtn2Style === 'solid') {
+                        btn2El.className = 'group relative px-8 py-4 bg-white text-primary rounded-full font-serif font-bold text-lg hover:bg-slate-100 transition-all text-center';
+                    } else {
+                        btn2El.className = 'group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-serif font-bold text-lg hover:bg-white hover:text-primary transition-all text-center';
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Error loading about content:', e);
+        }
+    }
+
+    async function loadActivitiesContent() {
+        try {
+            const res = await fetch('/api/content/activities');
+            if (!res.ok) return;
+            const payload = await res.json();
+            const data = payload.pageData || payload;
+
+            const titleEl = document.getElementById('activities-hero-title');
+            const subtitleEl = document.getElementById('activities-hero-subtitle');
+            const bgEl = document.getElementById('activities-hero-bg');
+            const btn1El = document.getElementById('activities-hero-btn1');
+            const btn1TextEl = document.getElementById('activities-hero-btn1-text');
+            const btn2El = document.getElementById('activities-hero-btn2');
+            const btn2TextEl = document.getElementById('activities-hero-btn2-text');
+            const heroSection = document.getElementById('activities-hero');
+
+            if (data.enabled === false && heroSection) {
+                heroSection.style.display = 'none';
+                return;
+            } else if (heroSection) {
+                heroSection.style.display = 'flex';
+            }
+
+            if (titleEl && data.heroTitle) titleEl.innerHTML = data.heroTitle;
+            if (subtitleEl && data.heroSubtitle) subtitleEl.innerText = data.heroSubtitle;
+            if (bgEl && data.heroImage) bgEl.src = data.heroImage;
+
+            if (btn1El) {
+                if (data.heroBtn1Show === false) {
+                    btn1El.style.display = 'none';
+                } else {
+                    btn1El.style.display = 'inline-flex';
+                    if (data.heroBtn1Link) btn1El.href = data.heroBtn1Link;
+                    if (data.heroBtn1Text && btn1TextEl) btn1TextEl.innerText = data.heroBtn1Text;
+                    if (data.heroBtn1NewTab) btn1El.target = '_blank';
+                    else btn1El.removeAttribute('target');
+
+                    if (data.heroBtn1Style === 'outline') {
+                        btn1El.className = 'group relative px-8 py-4 bg-transparent border-2 border-secondary text-secondary rounded-full font-serif font-bold text-lg hover:bg-secondary hover:text-white transition-all text-center';
+                    } else {
+                        btn1El.className = 'group relative px-8 py-4 bg-secondary text-white rounded-full font-serif font-bold text-lg overflow-hidden shadow-[0_0_30px_-5px_rgba(197,160,89,0.5)] hover:shadow-[0_0_50px_-5px_rgba(197,160,89,0.8)] transition-all transform hover:-translate-y-1 text-center';
+                    }
+                }
+            }
+
+            if (btn2El) {
+                if (data.heroBtn2Show === false) {
+                    btn2El.style.display = 'none';
+                } else {
+                    btn2El.style.display = 'inline-flex';
+                    if (data.heroBtn2Link) btn2El.href = data.heroBtn2Link;
+                    if (data.heroBtn2Text && btn2TextEl) btn2TextEl.innerText = data.heroBtn2Text;
+                    if (data.heroBtn2NewTab) btn2El.target = '_blank';
+                    else btn2El.removeAttribute('target');
+
+                    if (data.heroBtn2Style === 'solid') {
+                        btn2El.className = 'group relative px-8 py-4 bg-white text-primary rounded-full font-serif font-bold text-lg hover:bg-slate-100 transition-all text-center';
+                    } else {
+                        btn2El.className = 'group relative px-8 py-4 bg-transparent border-2 border-white/30 text-white rounded-full font-serif font-bold text-lg hover:bg-white hover:text-primary transition-all text-center';
+                    }
+                }
+            }
+        } catch (e) {
+            console.error('Error loading activities content:', e);
+        }
+    }
+
     loadHolidays();
     loadAcademicsContent();
     loadHomeContent();
+    loadAboutContent();
+    loadActivitiesContent();
 });

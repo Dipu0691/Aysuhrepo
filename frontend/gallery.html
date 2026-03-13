@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery | Hope International Academy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body
+    class="font-sans text-slate-800 antialiased bg-slate-50 selection:bg-secondary selection:text-white flex flex-col min-h-screen">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-white/80 backdrop-blur-xl border-b border-white/10"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="navbar-inner" class="flex justify-between items-center h-24 transition-all duration-500">
+                <div class="flex-shrink-0 flex items-center gap-3 group cursor-pointer">
+                    <a href="index.html">
+                        <img class="h-16 w-auto drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                            src="https://hopeinternationalacademy.com/wp-content/uploads/2025/07/cropped-Untitled-design-3-212x66.png"
+                            alt="Hope International Academy">
+                    </a>
+                </div>
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-10">
+                    <a href="index.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all">Home</a>
+                    <a href="about.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all">About</a>
+                    <a href="academics.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all">Academics</a>
+                    <a href="activities.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all">Activities</a>
+                    <a href="contact.html"
+                        class="text-slate-800 hover:text-secondary font-medium tracking-wide transition-all">Contact</a>
+                    <a href="index.html#admissions"
+                        class="bg-gradient-to-r from-primary to-slate-900 text-white px-8 py-3 rounded-full font-serif font-medium hover:shadow-2xl hover:shadow-primary/30 transition-all transform hover:-translate-y-1 block border border-transparent hover:border-secondary/30">Admissions</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="menu-toggle text-primary hover:text-secondary focus:outline-none transition-colors">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div
+            class="md:hidden hidden bg-white/95 backdrop-blur-xl shadow-2xl absolute w-full left-0 top-full border-t border-slate-100 mobile-menu transform transition-all duration-300 origin-top">
+            <div class="px-6 py-8 space-y-4">
+                <a href="index.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Home</a>
+                <a href="about.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">About</a>
+                <a href="academics.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Academics</a>
+                <a href="activities.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Activities</a>
+                <a href="contact.html"
+                    class="block text-lg font-serif font-medium text-slate-800 hover:text-secondary transition-colors">Contact</a>
+                <a href="index.html#admissions"
+                    class="block text-center bg-secondary text-white py-3 rounded-lg font-serif font-medium shadow-lg mt-6">Apply
+                    Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="pt-32 pb-16 bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center" data-aos="fade-up">
+            <h1 class="text-5xl md:text-6xl font-serif font-bold text-primary mb-4">Photo Gallery</h1>
+            <p class="text-lg text-slate-500 max-w-2xl mx-auto">Explore moments captured across our campus, events, and
+                activities.</p>
+        </div>
+    </header>
+
+    <!-- Gallery Grid -->
+    <main class="flex-grow py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Loading State -->
+            <div id="gallery-loading" class="flex flex-col items-center justify-center py-20 text-slate-400">
+                <i class="fas fa-spinner fa-spin text-4xl text-secondary mb-4"></i>
+                <p>Loading gallery images...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="gallery-empty" class="hidden flex-col items-center justify-center py-20 text-slate-400">
+                <i class="far fa-images text-6xl mb-4 text-slate-300"></i>
+                <h3 class="text-xl font-serif font-bold text-slate-500 mb-2">No Photos Yet</h3>
+                <p>Check back later for beautiful moments from our campus.</p>
+            </div>
+
+            <!-- Image Grid Container -->
+            <div id="gallery-grid" class="hidden columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6">
+                <!-- Images will be injected here dynamically -->
+            </div>
+        </div>
+    </main>
+
+    <!-- Fullscreen Lightbox Modal -->
+    <div id="lightbox"
+        class="fixed inset-0 z-[100] bg-black/95 backdrop-blur-sm hidden flex items-center justify-center transition-opacity opacity-0">
+        <button id="lightbox-close"
+            class="absolute top-6 right-6 text-white/50 hover:text-white transition-colors p-2 focus:outline-none z-[110]">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <div class="relative w-full max-w-5xl px-4 flex flex-col items-center">
+            <img id="lightbox-img" src="" alt="Enlarged view"
+                class="max-h-[85vh] max-w-full object-contain shadow-2xl rounded">
+            <p id="lightbox-caption" class="text-white mt-4 text-sm font-medium tracking-wide"></p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white pt-24 pb-12 border-t border-white/5 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-slate-500 text-sm">
+                <p>&copy; 2026 Hope International Academy. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script type="module" src="/script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            AOS.init({ once: true, offset: 50 });
+            fetchGallery();
+            setupLightbox();
+        });
+
+        async function fetchGallery() {
+            try {
+                const response = await fetch('http://localhost:3001/api/gallery');
+                if (!response.ok) throw new Error('Failed to fetch gallery');
+
+                const data = await response.json();
+                renderGallery(data);
+            } catch (error) {
+                console.error("Gallery Error:", error);
+                document.getElementById('gallery-loading').innerHTML = `
+                    <div class="text-center text-red-400">
+                        <i class="fas fa-exclamation-circle text-4xl mb-4"></i>
+                        <p>Unable to load gallery. Please try again later.</p>
+                    </div>
+                `;
+            }
+        }
+
+        function renderGallery(images) {
+            const loading = document.getElementById('gallery-loading');
+            const empty = document.getElementById('gallery-empty');
+            const grid = document.getElementById('gallery-grid');
+
+            loading.classList.add('hidden');
+
+            if (!images || images.length === 0) {
+                empty.classList.remove('hidden');
+                empty.classList.add('flex');
+                return;
+            }
+
+            grid.innerHTML = '';
+            images.forEach((img, index) => {
+                const delay = (index % 6) * 50;
+
+                const div = document.createElement('div');
+                div.className = 'break-inside-avoid rounded-xl overflow-hidden shadow-lg group relative cursor-pointer bg-slate-100';
+                div.setAttribute('data-aos', 'fade-up');
+                div.setAttribute('data-aos-delay', delay);
+
+                div.innerHTML = `
+                    <img src="${img.url}" alt="${img.alt || 'Gallery Image'}" class="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <i class="fas fa-search-plus text-white text-3xl drop-shadow-md transform scale-50 group-hover:scale-100 transition-transform duration-300 delay-100"></i>
+                    </div>
+                `;
+
+                div.addEventListener('click', () => openLightbox(img.url, img.alt));
+                grid.appendChild(div);
+            });
+
+            grid.classList.remove('hidden');
+            grid.classList.add('block'); // Trigger AOS layout if needed
+        }
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCaption = document.getElementById('lightbox-caption');
+        const lbClose = document.getElementById('lightbox-close');
+
+        function setupLightbox() {
+            lbClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && !lightbox.classList.contains('hidden')) {
+                    closeLightbox();
+                }
+            });
+        }
+
+        function openLightbox(src, alt) {
+            lbImg.src = src;
+            lbCaption.textContent = alt || '';
+            lightbox.classList.remove('hidden');
+            // Small delay to allow display:block to apply before changing opacity for transition
+            setTimeout(() => {
+                lightbox.classList.remove('opacity-0');
+                lightbox.classList.add('opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('opacity-100');
+            lightbox.classList.add('opacity-0');
+            setTimeout(() => {
+                lightbox.classList.add('hidden');
+                lbImg.src = '';
+            }, 300); // match transition duration
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+
+</html>
