@@ -10,7 +10,7 @@ export default defineConfig({
     server: {
         proxy: {
             '/api': {
-                target: 'http://localhost:3000',
+                target: 'http://localhost:5000',
                 changeOrigin: true,
             }
         }
@@ -24,6 +24,8 @@ export default defineConfig({
                 activities: resolve(__dirname, 'activities.html'),
                 privacy: resolve(__dirname, 'privacy.html'),
                 terms: resolve(__dirname, 'terms.html'),
+                admin: resolve(__dirname, 'admin.html'),
+                login: resolve(__dirname, 'login.html'),
             },
         },
     },
